@@ -72,16 +72,25 @@ function Navbar() {
               />
               </form>
             {isLoggedIn ? (
+              <>
               <Button className="ml-2" onClick={handleLogout} size="sm" color="primary" variant="ghost">
                 Logout
               </Button>
+
+              <Link to="/mybussiness" className="text-white px-3 py-2 rounded-md text-sm font-medium">
+               <Button className="ml-2"  size="sm" color="primary" variant="ghost">
+               my bussiness
+             </Button>
+              </Link>
+             </>
+
             ) : (
               <>
-                <Link to="/login" className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                {/* <Link to="/login" className="text-gray-900 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                   <Button size="sm" color="primary" variant="ghost">
                     Login
                   </Button>
-                </Link>
+                </Link> */}
                 <Link to="/register" className="text-white px-3 py-2 rounded-md text-sm font-medium">
                   <Button size="sm" color="primary" variant="ghost">
                     Register

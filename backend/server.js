@@ -4,6 +4,7 @@ import passport from "passport";
 import session from "express-session";
 import cors from "cors";
 import {configurePassport} from "./config/passport.js";
+import { upload } from "./utils/multer.js";
 
 import { connectdb } from "./config/db.js";
 import { router as userRouter } from "./routes/user.routes.js";
@@ -19,6 +20,7 @@ app.use(cors({
     origin: "http://localhost:5173",
     credentials: true,
 }));
+app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
