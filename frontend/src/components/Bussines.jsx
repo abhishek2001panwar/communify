@@ -43,7 +43,7 @@ const Business = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 justify-center">
           {Array.isArray(businesses) && businesses.length > 0 ? (
             businesses.map((business) => (
-              <Card key={business._id} className="max-w-[350px]">
+              <Card key={business._id} className=" font-['bellota'] max-w-[350px]">
                 <CardHeader className="flex gap-3">
                   <Image
                     alt="business logo"

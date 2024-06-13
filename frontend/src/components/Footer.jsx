@@ -1,6 +1,7 @@
 import React from "react";
 import { FiTwitter, FiFacebook, FiInstagram } from "react-icons/fi";
 // import CommunifyLogo from "./CommunifyLogo"; // Replace this with your Communify logo SVG
+import logo from '../assets/communify.png'; // Import the logo image
 
 const Footer = () => {
   return (
@@ -8,18 +9,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center justify-center">
         <div className="mb-4">
           <div className="h-8 w-auto" >
-          <svg
-            className="w-8 h-8 text-indigo-500"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11.414V14a1 1 0 11-2 0v-1.414l-2.293-2.293a1 1 0 111.414-1.414L10 11.586l2.293-2.293a1 1 0 111.414 1.414L11 13.414z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <img className="h-10 w-10" src={logo} alt="" />
 
           </div>
         </div>

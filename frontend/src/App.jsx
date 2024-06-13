@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Admin from './components/Admin';
 import AddBussiness from './components/Addbussiness';
+import Profile from './components/Profile';
 
 function App() {
   const { isLoggedIn } = useAuth();
@@ -28,6 +29,8 @@ function App() {
             <Route path="/bussines" element={<Bussines />} />
             <Route path="/postBusinessForm" element={<PostBusinessForm />} />
             <Route path="/addbussiness" element={<AddBussiness/>} />
+            <Route  path="/profile" element={<Profile/>} />
+
           </>
         ) : (
           <>

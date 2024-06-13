@@ -37,3 +37,16 @@ export const createPost = async (req, res) => {
     res.status(500).json({ msg: "Server error" });
   }
 };
+
+export const getPosts = async (req, res) => {
+
+    try {
+      const posts = await Post.find({ creator: req.user._id }).populate("creator");
+        res.send({
+            posts,
+            message: " all posts fetched successfully",
+        });
+    } catch (error) {
+        console.log("error in fetching posts", error);
+    }
+}

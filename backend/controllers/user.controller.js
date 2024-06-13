@@ -55,7 +55,7 @@ export const loginUser = async (req, res, next) => {
 };
 export const logout = async (req, res) => {
   try {
-    req.logout(err => {
+    req.logout((err) => {
       if (err) {
         return res.status(500).json({ msg: "Server error" });
       }
@@ -79,19 +79,17 @@ export const getOneUser = async (req, res) => {
   }
 };
 export const allUsers = async (req, res) => {
+  try {
+    const users = await User.find().populate("posts");
+    res.send({
+      users,
 
-    try {
-        const users = await User.find().populate("posts");
-        res.send({
-        users,
-
-        message: " all Users fetched successfully",
-        });
-    } catch (error) {
-        console.log("error in fetching users", error);
-    }
-    
-}
+      message: " all Users fetched successfully",
+    });
+  } catch (error) {
+    console.log("error in fetching users", error);
+  }
+};
 export const updateUser = () => {
   // Function implementation
 };
@@ -99,6 +97,27 @@ export const updateUser = () => {
 export const deleteUser = () => {
   // Function implementation
 };
+
+export const profileController = async (req, res) => {
+  
+    try {
+      // Fetch user data from the database based on req.user.id (assuming the user ID is stored in the token)
+      const user = await User.findById(req.user.id).select("-password"); // Exclude password for security
+
+      if (!user) {
+        return res.status(404).json({ msg: "User not found" });
+      }
+
+      // Fetch posts created by the current user
+      const posts = await Post.find({ user: req.user.id });
+
+      res.json({ user, posts });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  };
+
 
 export const getAuthStatus = (req, res) => {
   if (req.isAuthenticated()) {
