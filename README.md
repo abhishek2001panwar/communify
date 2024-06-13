@@ -1,11 +1,4 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 # Community-Driven Local Business Directory
 
@@ -24,17 +17,17 @@ The Community-Driven Local Business Directory is a multifaceted solution aimed a
 - **Backend**: Node.js, Express.js, MongoDB
 - **Frontend**: React.js
 - **Database**: MongoDB
-- **Authentication**: JSON Web Tokens (JWT)
-- **Deployment**: Heroku
+- **Authentication**: Passport
+- **Deployment**: Vercel
 
 ## Getting Started
 1. Clone this repository.
 2. Navigate to the backend folder and run `npm install` to install backend dependencies.
 3. Set up your MongoDB database and update the connection string in the `.env` file.
-4. Run `npm start` to start the backend server.
+4. Run `npm run dev` to start the backend server.
 5. Navigate to the frontend folder and run `npm install` to install frontend dependencies.
-6. Run `npm start` to start the frontend development server.
-7. Visit `http://localhost:3000` in your browser to view the application.
+6. Run `npm run dev` to start the frontend development server.
+7. Visit `http://localhost:5173` in your browser to view the application.
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
