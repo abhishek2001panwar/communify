@@ -10,7 +10,7 @@ import { connectdb } from "./config/db.js";
 import { router as userRouter } from "./routes/user.routes.js";
 import { router as postsRouter } from "./routes/post.routes.js";
 import { router as contactRouter } from "./routes/contact.routes.js";
-import { router as distRouter } from "./routes/dist.routes.js";
+// import { router as distRouter } from "./routes/dist.routes.js";
 dotenv.config();
 const app = express();
 
@@ -42,7 +42,7 @@ connectdb();
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/posts", postsRouter);
 app.use("/api/v1/contact", contactRouter);
-app.use("/" , distRouter)
+// app.use("/" , distRouter)
 
 
 
