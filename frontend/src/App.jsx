@@ -13,6 +13,7 @@ import Register from './components/Register';
 import Admin from './components/Admin';
 import AddBussiness from './components/Addbussiness';
 import Profile from './components/Profile';
+import Detail from './components/Detail';
 
 function App() {
   const { isLoggedIn } = useAuth();
@@ -24,6 +25,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/about" element={<About />} />
+        <Route path="/detail/:id" element={<Detail />} />
         {isLoggedIn ? (
           <>
             <Route path="/bussines" element={<Bussines />} />

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
+import toast, { Toaster } from "react-hot-toast";
+import { useAuth } from "../context/Authcontext";
 
 function Contact() {
+
+  const { isLoggedIn } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -11,6 +15,10 @@ function Contact() {
     e.preventDefault();
     try {
       const userDetail = { name, email, subject, message };
+
+      if (!name || !email || !subject || !message) {
+        return toast.error("Please fill all the fields");
+      }
       const response = await fetch("/api/v1/contact/createcontact", {
         method: "POST",
         body: JSON.stringify(userDetail),
@@ -24,7 +32,11 @@ function Contact() {
         setEmail("");
         setSubject("");
         setMessage("");
-        console.log(data);
+
+        return toast.success("Message sent successfully");
+      }
+      if(!isLoggedIn){
+        return toast.error("Please login to send message");
       }
     } catch (error) {
       console.log(error);
@@ -33,9 +45,8 @@ function Contact() {
 
   return (
     <>
-    
-      <section className="flex font-['bellota'] items-center justify-center min-h-screen  py-10">
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <section className="flex relative font-['bellota'] items-center justify-center min-h-screen  py-10">
+        <div className="bg-white  p-8 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-3xl font-light text-center mb-8">Contact Us</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -108,11 +119,14 @@ function Contact() {
             </div>
             <div>
               <button
+
+               
                 type="submit"
                 className="w-full border-2 border-['#006fee']  px-4 py-2 hover:text-white rounded-lg font-light hover:bg-blue-600 transition duration-1000"
               >
                 Send Message
               </button>
+              <Toaster />
             </div>
           </form>
         </div>

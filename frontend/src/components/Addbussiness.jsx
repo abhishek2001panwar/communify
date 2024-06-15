@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/Authcontext";
+import toast, { Toaster } from "react-hot-toast";
 
 function AddBusiness() {
   const { isLoggedIn } = useAuth(); // Assuming isLoggedIn provides user details including id
@@ -15,7 +16,7 @@ function AddBusiness() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [imageUrl, setImageUrl] = useState(""); // State to store image URL
-
+const notify = () => toast("form submitted!");
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -51,16 +52,18 @@ function AddBusiness() {
     data.append("userId", isLoggedIn.id); // Append userId to the form data
 
     try {
-      const response = await axios.post(
-        `/api/v1/posts/createpost`,
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      setMessage("Form submitted successfully!");
+      const response = await axios.post(`/api/v1/posts/createpost`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (FormData === null) {
+        return toast.error("Please fill all the fields");
+      }
+
+      setMessage("Bussiness successfully Added!");
+      toast.success("Business added successfully");
+
       setImageUrl(response.data.post.image);
       setError("");
       setFormData({
@@ -72,11 +75,9 @@ function AddBusiness() {
         closingTime: "",
       });
 
-      console.log("Form submitted successfully:", response.data);
     } catch (error) {
       setMessage("");
       setError("Error submitting the form. Please check your input.");
-      console.error("Error submitting the form:", error);
       if (error.response) {
         console.error("Response data:", error.response.data);
         console.error("Response status:", error.response.status);
@@ -86,7 +87,7 @@ function AddBusiness() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md mt-10">
+    <div className="max-w-md mx-auto p-4 font-['bellota'] bg-white shadow-md rounded-md mt-10">
       <h2 className="text-2xl font-bold mb-6 text-center">Add Business</h2>
       {message && <p className="text-center text-green-500">{message}</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
@@ -198,6 +199,7 @@ function AddBusiness() {
           */}
           <button
             type="submit"
+            onClick={notify}
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#006fee] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Submit

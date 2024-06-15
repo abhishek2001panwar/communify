@@ -2,9 +2,12 @@ import React from "react";
 import { Button } from "@nextui-org/react";
 import { Link } from "react-router-dom"; // Import Link component
 import { useAuth } from "../context/Authcontext";
+import toast, { Toaster } from "react-hot-toast";
 
 function Hero() {
   const { isLoggedIn } = useAuth();
+
+  const notify = () => toast("Please login to add a business");
 
   return (
     <div>
@@ -40,8 +43,12 @@ function Hero() {
               </>
             ) : (
               <>
+              
+                <Toaster />
                 <Link to="/login">
                   <Button
+
+                    
                     size="xs"
                     radius="full"
                     color="primary"
@@ -52,6 +59,7 @@ function Hero() {
                 </Link>
                 <Link to="/login">
                   <Button
+                    onClick={notify}
                     size="xs"
                     radius="full"
                     color="primary"
