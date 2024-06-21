@@ -48,16 +48,16 @@ app.use("/api/v1/contact", contactRouter);
 
 // production
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(path.resolve(), "../frontend/dist")));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(path.resolve(), "../frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(path.resolve(), "../frontend", "dist", "index.html"));
-  });
-}
-else{
-  app.use("/",distRouter)
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(path.resolve(), "../frontend", "dist", "index.html"));
+//   });
+// }
+// else{
+//   app.use("/",distRouter)
+// }
 
 
 app.listen(process.env.PORT || 4000, () => {
