@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 import { useAuth } from '../context/Authcontext'; // Import useAuth hook from your AuthContext
 import logo from '../assets/communify.png'; // Import the logo image
 function Login() {
@@ -121,7 +121,7 @@ function Login() {
           >
             {isRegister ? 'Register' : 'Sign In'}
           </button>
-          <div className="flex items-center justify-center">
+          {/* <div className="flex items-center justify-center">
             <span className="mx-2">or</span>
             <GoogleLogin
               clientId="597899999242-95od2qqb9tcad1cuahf1eskno80l3mh3.apps.googleusercontent.com"
@@ -132,7 +132,7 @@ function Login() {
                redirectUri="http://localhost:3000/auth/google/callback"
               className="google-login-button"
             />
-          </div>
+          </div> */}
         </form>
         <div className="text-center">
           <p>
