@@ -36,9 +36,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/posts", postsRouter);
 app.use("/api/v1/contact", contactRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-} );
+
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server is running on port ${process.env.PORT} `);
