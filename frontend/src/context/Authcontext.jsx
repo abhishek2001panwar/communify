@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      await axios.post('/api/v1/user/login', credentials, { withCredentials: true });
+      await axios.post('/https://communify-indol.vercel.app/api/v1/user/login', credentials, { withCredentials: true });
       setIsLoggedIn(true);
     } catch (error) {
       console.error('Login failed:', error);
