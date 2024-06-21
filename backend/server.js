@@ -18,10 +18,11 @@ const app = express();
 
 
 //middleware
-app.use(cors({
-    origin: process.env.BASE_URL,
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: process.env.BASE_URL,
+//     credentials: true,
+// }));
+app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
 app.use(express.json());
