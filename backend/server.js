@@ -41,3 +41,4 @@ app.use("/api/v1/contact", contactRouter);
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server is running on port ${process.env.PORT} `);
 });
+export default app;
