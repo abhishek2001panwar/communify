@@ -13,6 +13,8 @@ The Community-Driven Local Business Directory is a multifaceted solution aimed a
 - **Digital Accessibility**: The platform serves as a digital marketplace, making local businesses more accessible to customers online.
 
 
+
+
 ## Technologies Used
 - **Backend**: Node.js, Express.js, MongoDB
 - **Frontend**: React.js
